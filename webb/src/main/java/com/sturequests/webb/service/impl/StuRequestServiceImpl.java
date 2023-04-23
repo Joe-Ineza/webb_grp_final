@@ -23,6 +23,8 @@ public class StuRequestServiceImpl implements StuRequestService {
     public StuRequestServiceImpl(StuRequestRepository sturequestRepository){
         this.sturequestRepository = sturequestRepository;
     }
+
+
     @Override
     public StuRequest saveRequest(StuRequestDto sturequestDto) {
         StuRequest sturequest = mapToStuRequest(sturequestDto);

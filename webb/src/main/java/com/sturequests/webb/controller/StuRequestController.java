@@ -22,6 +22,12 @@ public class StuRequestController {
         this.stuRequestService = stuRequestService;
     }
 
+//    @GetMapping("/requis")
+//    public String listRequests(Model model) {
+//        List<StuRequestDto> requs = stuRequestService.findAllRequests;
+//        model.addAttribute("requs", requs);
+//        return "requis-list";
+//    }
     @GetMapping("/requis")
     public String listRequis(Model model)
     {
