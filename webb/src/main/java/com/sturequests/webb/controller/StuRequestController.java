@@ -36,6 +36,30 @@ public class StuRequestController {
         return "requis-list";
     }
 
+    @GetMapping("/requislect")
+    public String listRequisLect(Model model)
+    {
+        List<StuRequestDto> requis = stuRequestService.findAllRequests();
+        model.addAttribute("requis", requis);
+        return "requis-lect";
+    }
+
+    @GetMapping("/requisexof")
+    public String listRequisexof(Model model)
+    {
+        List<StuRequestDto> requis = stuRequestService.findAllRequests();
+        model.addAttribute("requis", requis);
+        return "requis-exof";
+    }
+    @GetMapping("/requishod")
+    public String listRequishod(Model model)
+    {
+        List<StuRequestDto> requis = stuRequestService.findAllRequests();
+        model.addAttribute("requis", requis);
+        return "requis-hod";
+    }
+
+
     @GetMapping("/requi/new")
     public String createRequiForm(Model model)
     {

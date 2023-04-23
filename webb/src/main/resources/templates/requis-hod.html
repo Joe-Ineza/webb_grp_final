@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table class="table table-dark">
+    <thead>
+    <tr>
+        <th scope="col">Identification</th>
+        <th scope="col">Email</th>
+        <th scope="col">Student ID</th>
+        <th scope="col">Date of Request Submission</th>
+        <th scope="col">Lecturer Reply</th>
+        <th scope="col">Exam_Officer Reply</th>
+        <th scope="col">HOD Reply</th>
+        <th scope="col">Recent_Update Made</th>
+        <th scope="col">Request Type</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="requ :${requis}">
+        <div  th:if="${requ.hodResponse == PENDING}">
+            <th scope="row" th:text="${requ.ident}" ></th>
+            <td th:text="${requ.email}"></td>
+            <td th:text="${requ.studentId}"></td>
+            <td th:text="${requ.submittedOn}"></td>
+            <td th:text="${requ.lecturerResponse}"></td>
+            <td th:text="${requ.examOfficerResponse}"></td>
+            <td th:text="${requ.hodResponse}"></td>
+            <td th:text="${requ.recentUpdatedOn}"></td>
+            <td th:text="${requ.typeOfRequest}"></td>
+
+        </div>
+    </tr>
+    </tr>
+
+    </tbody>
+</table>
+
+</body>
+</html>
