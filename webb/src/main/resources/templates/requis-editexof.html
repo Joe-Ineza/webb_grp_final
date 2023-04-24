@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<main class="flex-shrink-0">
+  <section layout:fragment="body" class="py-5">
+    <div class="container">
+      <form role="form" method="post" th:href="@{/requis/{requiId}/editexof(requiId=${stuRequ.ident})}" th:object="${stuRequ}">
+        <input type="hidden" th:field="*{ident}">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="email">Email</label>
+            <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    th:field="*{email}"
+                    readonly>
+          </div>
+          <div class="form-group col-md-6">
+            <input
+                    type="hidden"
+                    class="form-control"
+                    id="createdOn"
+                    name="createdOn"
+                    th:field="*{submittedOn}"
+            >
+          </div>
+
+
+          <div class="form-group col-md-6">
+            <label for="typeOfRequest">Type Of Request</label>
+            <input
+                    type="text"
+                    class="form-control"
+                    id="typeOfRequest"
+                    name="typeOfRequest"
+                    th:field="*{typeOfRequest}"
+                    readonly>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label>Required Document</label>
+            <input
+                    type="button"
+                    class="form-control"
+                    id="requiredDoc"
+                    name="required doc"
+                    th:field="*{requiredDocs}"
+            >
+          </div>
+          <div class="form-group col-md-6">
+            <label>Exam Officer Response</label>
+            <select class="form-select" aria-label="Default select example" th:field="*{examOfficerResponse}">
+              <!--              <option selected>Choose Type of Request</option>-->
+              <option value="PENDING">PENDING</option>
+              <option value="CONFIRMED">CONFIRMED</option>
+              <option value="DENIED">DENIED</option>
+            </select>
+          </div>
+
+
+
+          <div class="form-group col-md-6">
+            <label for="lecturerResponse">Lecturer Response</label>
+            <input
+                    type="text"
+                    class="form-control"
+                    id="lecturerResponse"
+                    name="lecturerResponse"
+                    th:field="*{lecturerResponse}"
+            readonly>
+          </div>
+
+          <div class="form-group col-md-6">
+            <input
+                    type="hidden"
+                    class="form-control"
+                    id="hodResponse"
+                    name="hodResponse"
+                    th:field="*{hodResponse}"
+            >
+          </div>
+          <div class="form-group col-md-6">
+            <label for="studentId">STUDENT ID</label>
+            <input
+                    type="text"
+                    class="form-control"
+                    id="studentId"
+                    name="studentId"
+                    th:field="*{studentId}"
+                    placeholder="Enter your student id" readonly>
+
+          </div>
+
+          <div class="form-group col-md-6">
+            <input
+                    type="hidden"
+                    class="form-control"
+                    id="requestStatus"
+                    name="requestStatus"
+                    th:field="*{requestStatus}"
+            >
+
+          </div>
+
+          <div class="mb-0">
+            <input
+                    type="hidden"
+                    class="form-control"
+                    id="formFile"
+                    accept=".pdf"
+                    name="requiredDocs"
+                    th:field="*{requiredDocs}"
+            >
+
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Create</button>
+      </form>
+    </div>
+  </section>
+</main>
+</body>
+</html>

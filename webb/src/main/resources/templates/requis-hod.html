@@ -16,12 +16,13 @@
         <th scope="col">Exam_Officer Reply</th>
         <th scope="col">HOD Reply</th>
         <th scope="col">Recent_Update Made</th>
+        <th scope="col">Respond</th>
         <th scope="col">Request Type</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="requ :${requis}">
-        <div  th:if="${requ.hodResponse == PENDING}">
+        <div  th:if="${requ.examOfficerResponse == 'CONFIRMED'  and requ.hodResponse =='PENDING'}">
             <th scope="row" th:text="${requ.ident}" ></th>
             <td th:text="${requ.email}"></td>
             <td th:text="${requ.studentId}"></td>
@@ -30,6 +31,7 @@
             <td th:text="${requ.examOfficerResponse}"></td>
             <td th:text="${requ.hodResponse}"></td>
             <td th:text="${requ.recentUpdatedOn}"></td>
+            <td><a th:href="@{/requis/{requiId}/edithod(requiId=${requ.ident})}" class="view-link">Respond</a></td>
             <td th:text="${requ.typeOfRequest}"></td>
 
         </div>

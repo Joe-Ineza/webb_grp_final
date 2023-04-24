@@ -12,5 +12,8 @@ public interface StuRequestService {
 
     List<StuRequestDto> findAllRequests();
 
+    StuRequestDto findRequestById(Long requId);
+    void updateRequest(StuRequestDto stuReq);
+
 
 }

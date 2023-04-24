@@ -6,8 +6,11 @@ import com.sturequests.webb.service.StuRequestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -28,6 +31,71 @@ public class StuRequestController {
 //        model.addAttribute("requs", requs);
 //        return "requis-list";
 //    }
+
+    @GetMapping("/requis/{requiId}/editexof")
+    public String editRequisFormexof(@PathVariable("requiId") Long requiId, Model model){
+        StuRequestDto stuRequ = stuRequestService.findRequestById(requiId);
+        model.addAttribute("stuRequ", stuRequ);
+        return "requis-editexof";
+
+    }
+
+    @PostMapping("/requis/{requiId}/editexof")
+    public String updateRequiexof(@PathVariable("requiId") Long requiId,
+                              @Validated @ModelAttribute("stuRequ") StuRequestDto stuRequ,
+                              BindingResult result, Model model){
+        if(result.hasErrors())
+        {
+            model.addAttribute("stuRequ",stuRequ);
+            return "requis-editexof";
+        }
+        stuRequ.setIdent(requiId);
+        stuRequestService.updateRequest(stuRequ);
+        return "redirect:/requisexof";
+    }
+
+    @GetMapping("/requis/{requiId}/edithod")
+    public String editRequisFormhod(@PathVariable("requiId") Long requiId, Model model){
+        StuRequestDto stuRequ = stuRequestService.findRequestById(requiId);
+        model.addAttribute("stuRequ", stuRequ);
+        return "requis-edithod";
+
+    }
+
+    @PostMapping("/requis/{requiId}/edithod")
+    public String updateRequihod(@PathVariable("requiId") Long requiId,
+                                  @Validated @ModelAttribute("stuRequ") StuRequestDto stuRequ,
+                                  BindingResult result, Model model){
+        if(result.hasErrors())
+        {
+            model.addAttribute("stuRequ",stuRequ);
+            return "requis-edithod";
+        }
+        stuRequ.setIdent(requiId);
+        stuRequestService.updateRequest(stuRequ);
+        return "redirect:/requishod";
+    }
+    @GetMapping("/requis/{requiId}/edit")
+    public String editRequisForm(@PathVariable("requiId") Long requiId, Model model){
+        StuRequestDto stuRequ = stuRequestService.findRequestById(requiId);
+        model.addAttribute("stuRequ", stuRequ);
+        return "requis-edit";
+
+    }
+
+    @PostMapping("/requis/{requiId}/edit")
+    public String updateRequi(@PathVariable("requiId") Long requiId,
+                               @Validated @ModelAttribute("stuRequ") StuRequestDto stuRequ,
+                                 BindingResult result, Model model){
+        if(result.hasErrors())
+        {
+            model.addAttribute("stuRequ",stuRequ);
+            return "requis-edit";
+        }
+        stuRequ.setIdent(requiId);
+        stuRequestService.updateRequest(stuRequ);
+        return "redirect:/requislect";
+    }
     @GetMapping("/requis")
     public String listRequis(Model model)
     {

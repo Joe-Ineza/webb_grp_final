@@ -15,6 +15,7 @@
         <th scope="col">Lecturer Reply</th>
         <th scope="col">Exam_Officer Reply</th>
         <th scope="col">HOD Reply</th>
+        <th scope="col">Required Docs</th>
         <th scope="col">Recent_Update Made</th>
         <th scope="col">Request Status</th>
         <th scope="col">Request Type</th>
@@ -29,6 +30,7 @@
         <td th:text="${requ.lecturerResponse}"></td>
         <td th:text="${requ.examOfficerResponse}"></td>
         <td th:text="${requ.hodResponse}"></td>
+        <td><a href="@{http://${requ.requiredDocs}}" class="view-link">View</a></td>
         <td th:text="${requ.recentUpdatedOn}"></td>
         <td th:text="${requ.requestStatus}"></td>
         <td th:text="${requ.typeOfRequest}"></td>

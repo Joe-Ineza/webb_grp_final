@@ -31,9 +31,23 @@ public class StuRequestServiceImpl implements StuRequestService {
         return sturequestRepository.save(sturequest);
     }
 
+
+
     @Override
     public List<StuRequestDto> findAllRequests() {
         List<StuRequest> stuRequests = sturequestRepository.findAll();
         return stuRequests.stream().map((stuRequest) -> mapToStuRequestDto(stuRequest)).collect(Collectors.toList());
+    }
+
+    @Override
+    public StuRequestDto findRequestById(Long requId) {
+        StuRequest stuRequest = sturequestRepository.findById(requId).get();
+        return mapToStuRequestDto(stuRequest);
+    }
+
+    @Override
+    public void updateRequest(StuRequestDto stuReq) {
+        StuRequest stuRequest = mapToStuRequest(stuReq);
+        sturequestRepository.save(stuRequest);
     }
 }
